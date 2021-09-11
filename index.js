@@ -21,7 +21,14 @@ app.get('/analysis', (request, response) => {
     });
   });
 
-});
+})
+.get('/', (_, response) => {
+  response.json({
+    status: "success",
+    message: "chess analysis api welcome",
+    endpoint: "/analysis?fen=<FEN>&depth=<DEPTH>&multiPv=<MULTI_PV>"
+  });
+})
 
 const httpListener = server.listen(process.env.PORT || 8080, () => {
   console.log(`HTTP server run at: ${httpListener.address().port}`);
